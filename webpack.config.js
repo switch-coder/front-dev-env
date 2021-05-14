@@ -1,8 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: "development",
@@ -29,20 +25,7 @@ module.exports = {
       }
     ]
   },
-  plugins:[
-    new webpack.BannerPlugin({
-      banner: `build time : ${new Date().toLocaleDateString()}`
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      templateParameters:{
-        env : process.env.NODE_ENV === "development" ? '(개발용)' : '(정식용)'
-      }
-    }),
-    new CleanWebpackPlugin(),
-    ...(process.env.NODE_ENV === "production" ? [
-      new MiniCssExtractPlugin({filename: '[name].css'})]:[])
-  ]
+
 };
   
   /**
