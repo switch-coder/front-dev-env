@@ -10,3 +10,4 @@ module.exports = {
     path: path.resolve('./dist'),
   }
 }
+
