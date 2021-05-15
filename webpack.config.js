@@ -37,7 +37,12 @@ module.exports = {
       }
       /**
        * TODO: babel-loader를 구성해 보세요.
-       */
+       */,
+       {
+         test:/\.js$/,
+         use:["babel-loader"],
+         exclude: /node_modules/
+       }
     ]
   },
   plugins: [
