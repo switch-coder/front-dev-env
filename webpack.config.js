@@ -88,19 +88,18 @@ module.exports = {
       : [])
   ],
   optimization: {
-    minimizer:
-      mode === "production"
-        ? [
-            new OptimizeCSSAssetsPlugin(),
-            new TerserPlugin({
-              terserOptions: {
-                compress: {
-                  drop_console: true // 콘솔 로그를 제거한다
-                }
-              }
-            })
-          ]
-        : []
+      minimizer: mode === "production" ? [
+        new OptimizeCSSAssetsPlugin,
+        new TerserPlugin({
+          parallel:true,
+          sourceMap : true,
+          terserOptions:{
+            compress:{
+              drop_console:true
+            }
+          }
+        })
+      ] : []
   },
   externals: {
     axios: "axios"
